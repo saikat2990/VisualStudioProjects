@@ -1,0 +1,49 @@
+﻿@model Spl2.Models.DailyStudentServiceList
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>DailyStudentServiceList</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Session" />
+            <div class="form-group">
+                <label asp-for="studentname" class="control-label"></label>
+                <input asp-for="studentname" class="form-control" />
+                <span asp-validation-for="studentname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="problemDetails" class="control-label"></label>
+                <input asp-for="problemDetails" class="form-control" />
+                <span asp-validation-for="problemDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DrugList" class="control-label"></label>
+                <input asp-for="DrugList" class="form-control" />
+                <span asp-validation-for="DrugList" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

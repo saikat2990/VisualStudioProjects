@@ -1,0 +1,48 @@
+﻿@model List<Spl2.Models.DailyStudentServiceList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              Drug
+            </th>
+            <th>
+               Amount
+            </th>
+            <th>
+                Session
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            foreach (var i in item.DrugInfoPerStudents)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Session)
+                    </td>
+
+                </tr>
+
+            }
+
+
+
+        }
+    </tbody>
+</table>

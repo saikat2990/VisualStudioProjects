@@ -1,0 +1,22 @@
+﻿
+<div>
+    <h2>All Drinks are Here </h2>
+    @{
+        foreach (var drink in Model.drinks)
+        {
+            <div class="col-lg-4, col-sm-4 , col-md-4">
+                <div class="thumbnail">
+                    <img src="@drink.ImageUrl"/>
+                    <div class="caption">
+
+                        <h2>Name: @drink.Name</h2>
+                        <p>Price: @drink.Price.ToString("c")</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    }
+</div>

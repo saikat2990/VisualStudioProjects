@@ -1,0 +1,42 @@
+﻿@model Spl2.Models.DailyStudentServiceList
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DailyStudentServiceList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.studentname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.studentname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.problemDetails)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.problemDetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DrugList)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DrugList)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Session">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

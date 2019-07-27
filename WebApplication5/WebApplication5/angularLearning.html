@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/Script.js"></script>
+    <script src="Scripts/Filter.js"></script>
+    <link href="Scripts/AL.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body ng-controller="mycontroller">
+    
+    OrderBy <select ng-model="sortColmn">
+    <option value="name">Name Asc  </option>
+    <option value="gender">Gender Asc  </option>
+    <option value="dateOfBirth">dateOfBirth Asc  </option>
+    <option value="-salary">Salary Asc  </option>
+</select>
+
+    <br/><br /><br />
+
+    Search <input type="text" placeholder="search By Name...." ng-model="searchTxt"/>
+    <br/><br /><br />
+    <table>
+        <thead>
+            <tr>
+                <th ng-click="sortData('name')">
+                    Name <div ng-class="getSortClass('name')"></div>
+
+                </th>
+                <th ng-click="sortData('dateOfBirth')">
+                    DateOfBirth<div ng-class="getSortClass('dateOfBirth')"></div>
+
+                </th>
+                <th ng-click="sortData('gender')">
+                    Gender <div ng-class="getSortClass('gender')"></div>
+
+                </th>
+                <th ng-click="sortData('salary')">
+                    Salary<div ng-class="getSortClass('salary')"></div>
+
+                </th>
+            </tr>
+        </thead>
+
+        <tbody ng-repeat="employee in employees | orderBy:sortColmn:reverseSort | filter:search">
+            <tr>
+                <td>{{ employee.name | uppercase}}</td>
+                <td>{{ employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+                <td>{{ employee.gender | gender}}</td>
+                <td>{{ employee.salary | currency:"$":1}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2> Registration</h2>
+
+<form id="catagoryRegistrationTable">
+
+
+    <label>Name</label><span class="text-danger">*</span>
+    <input name="Name" /><br />
+
+    <label>Email</label>
+    <input name="Email" /><br />
+
+    <label>PassWord</label>
+    <input name="PassWord" /><br />
+
+    <button type="button" id="savebtn" class="btn btn-primary">Register</button>
+    
+</form>
+
+<script>
+
+
+    $('#catagoryCreateTable').validate({
+        rules: {
+            Name: {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
+            },
+           PassWord: {
+                maxlength: 6
+            }
+        },
+        messages: {
+            Name: {
+                required: 'Name is required',
+                minlength: 'Minimum Length is 5',
+                maxlength: 'Maximum Length is 50'
+            },
+            PassWord: {
+                maxlength: 'Maximum Length is 6'
+            }
+        }
+    });
+
+
+    $("#savebtn").click(function () {
+
+        if ($("#catagoryRegistrationTable").valid()) {
+
+            $.ajax({
+                type: "POST",
+                url: '/Home/Registration',
+                data: $("#catagoryRegistrationTable").serialize()
+            })
+                .done(function (response) {
+                    //alert(response);
+                    $("#tableContainer").html(response);
+                    $("#actionContainer").html("");
+                    focusAction("tableContainer");
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    swal({
+                        title: "Warning?",
+                        text: "PLease enter all required field!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    });
+                });
+
+        } else {
+
+            swal({
+                title: "Warning?",
+                text: "PLease enter all required field!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            });
+
+        }
+
+    });
+
+</script>

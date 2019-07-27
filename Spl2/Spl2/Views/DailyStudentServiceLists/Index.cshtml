@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Spl2.Models.DailyStudentServiceList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.studentname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.problemDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DrugList)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.studentname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.problemDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrugList)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Session">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Session">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Session">Delete</a>
+                <a asp-action="Show" asp-route-id="@item.Session">Show</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
